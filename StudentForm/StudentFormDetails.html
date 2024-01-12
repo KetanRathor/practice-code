@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Student.css" />
+    <title>Form Submission Example</title>
+</head>
+<body>
+
+    <h1>Student Details Form</h1>
+
+    <form id="myForm">
+        
+    <div>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    
+    </div>
+    <br>
+    <div>
+
+        <label for="date">DOB:</label>
+        <input type="date" id="dob" name="dob">
+    
+    </div>
+    <br>
+    <div>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+        
+    </div>
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+        <button type="button" onclick="searching()">Search</button>
+
+        <button type="button" id="submit" onclick="submitForm()">Submit</button>
+
+        <button type="button" id="Asc" onclick="sortasc()">Asc</button>
+        <button type="button" id="Desc" onclick="sortdesc()">Desc</button>
+    </div> 
+    <br> 
+    </form>
+    
+    <h2>Student Details Table </h2>
+
+    <table id="dataTable">
+        <thead>
+            <tr id="rows">
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <script src="Student.js"></script>
+</body>
+</html>

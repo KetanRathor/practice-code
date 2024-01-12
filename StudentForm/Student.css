@@ -1,0 +1,99 @@
+body {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
+
+h1 { 
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(178, 32, 76, 0.792);
+    border-style: outset;
+    border-radius: 5px;
+   
+    padding: 11px 4px 11px 4px;
+}
+#myForm {
+    display: flex;
+    
+    flex-direction:column;
+    
+    align-items: center;
+    text-align:center;
+    
+    
+    }
+
+input {
+   
+    
+    height: 25px;
+    border: ridge;
+    border-radius: 6px;
+}
+label {
+    color:rgb(57, 55, 55);
+    width: 230px;
+    
+    
+}
+#submit{
+    color: rgb(0, 0, 0);
+    background-color: rgb(167, 145, 170);
+    width: 70px;
+    left: 30px;
+}
+#Asc {
+    width: 45px;
+    background-color: rgb(35, 31, 31);
+    color: white;
+}
+#Desc {
+    width: 45px;
+    background-color: rgb(35, 31, 31);
+    color: white;
+}
+h2{
+    display: flex;
+    
+    flex-direction:column;
+    
+    align-items: center;
+    text-align:center;
+
+   
+    color: rgb(33, 81, 33);
+    border-bottom: 6px solid rgb(62, 152, 62);
+    
+}
+#dataTable {
+    display: flexbox;
+    flex-direction:column;
+    
+    align-items: center;
+    justify-content: space-around;
+
+    
+    text-align: center;
+}
+#tableBody{
+   display: flexbox;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-around;
+    width: 50%; 
+    
+    text-align: center;
+}
+#rows{
+    color: rgb(147, 101, 16);
+}
+#dataTable button{
+    background-color: rgb(194, 61, 61);
+}

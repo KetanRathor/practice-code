@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Example</title>
+</head>
+<body>
+
+    <h1>Form Submission Example</h1>
+
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" >
+
+        <label for="date">DOB:</label>
+        <input type="date" id="dob" name="dob" >
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" >
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script>
+        function submitForm() {
+            
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+            var address = document.getElementById("address").value;
+
+            if (name.trim() === '' || dob === '' || address.trim() === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            var formData = {
+                name: name,
+                dob: dob,
+                address: address
+            };
+
+            
+            var formDataString = JSON.stringify(formData);
+
+            
+
+           
+            var table = document.getElementById("dataTable");
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+           
+            cell1.innerHTML = name;
+            cell2.innerHTML = dob;
+            cell3.innerHTML = address;
+
+            
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete";
+            deleteButton.onclick = function() {
+                deleteRow(newRow);
+            };
+            cell3.appendChild(deleteButton);
+
+            
+            document.getElementById("myForm").reset();
+        }
+
+        function deleteRow(row) {
+            var index = row.rowIndex;
+            document.getElementById("dataTable").deleteRow(index);
+        }
+    </script>
+
+</body>
+</html>
