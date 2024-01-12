@@ -1,0 +1,46 @@
+#div2{
+    display: flex;
+    background-color: hsl(60, 100%, 50%);
+    position: relative;
+    flex-direction: row;
+    height: 20px;
+    width: 20px;
+}
+#div3{
+    display: flex;
+    background-color: green;
+    position: relative;
+    flex-direction: column;
+    height: 20px;
+    width: 20px;
+}
+#div4{
+    display: flex;
+    background-color: red;
+    position: relative;
+    flex-direction: column;
+    height: 20px;
+    width: 20px;
+}
+
+#divParent{
+    display: flex;
+    position: absolute;
+    top: 10px;
+    flex-direction: row;
+    gap: 10px;
+}
+#div1{
+    display: flex;
+    position: relative;
+    left: 25%;
+}
+#textdiv{
+    background-color: yellow;
+    display: flex;
+    position: absolute;
+    top: 40px;
+    height: 40vh;
+    width: 100vh;
+    text-align: center;
+}
