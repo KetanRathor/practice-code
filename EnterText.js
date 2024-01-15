@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 let dataState = {
     enterText: "",
     selectColor: ""
 };
 
 function renderUI() {
+<<<<<<< HEAD
     let main_div=document.getElementById('root')
     main_div.innerHTML="";
+=======
+
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 
     let div1 = document.createElement("div");
     div1.setAttribute("id", "div1");
@@ -34,24 +41,40 @@ function renderUI() {
     div1.appendChild(resetButton);
 
 
+<<<<<<< HEAD
     main_div.appendChild(div1);
 
+=======
+    document.getElementById("root").appendChild(div1);
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 
     let textdiv = document.createElement("div");
 
     textdiv.setAttribute("id", "textdiv");
+<<<<<<< HEAD
     div1.appendChild(textdiv);
 
     let divParent = document.createElement("div");
     divParent.setAttribute("id", "divParent");
     div1.appendChild(divParent);
+=======
+    document.body.appendChild(textdiv);
+
+    let divParent = document.createElement("div");
+    divParent.setAttribute("id", "divParent");
+    document.body.appendChild(divParent);
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 
     let div2 = document.createElement("div");
     div2.setAttribute("id", "div2");
     divParent.appendChild(div2);
     div2.onclick = function() {
+<<<<<<< HEAD
         handleDivClick("div2");
         updateTextColor();
+=======
+        handleDivClick("div2")
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
     };
 
 
@@ -59,16 +82,24 @@ function renderUI() {
     div3.setAttribute("id", "div3");
     divParent.appendChild(div3);
     div3.onclick = function() {
+<<<<<<< HEAD
         handleDivClick("div3");
         updateTextColor();
+=======
+        handleDivClick("div3")
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
     };
 
     let div4 = document.createElement("div");
     div4.setAttribute("id", "div4");
     divParent.appendChild(div4);
     div4.onclick = function() {
+<<<<<<< HEAD
         handleDivClick("div4");
         updateTextColor();
+=======
+        handleDivClick("div4")
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
     };
 
 }
@@ -76,6 +107,7 @@ function renderUI() {
 
 function handleDivClick(divId) {
 
+<<<<<<< HEAD
     // if text entered div cannot be clicked 
     if (dataState.enterText !== "") {
         
@@ -86,6 +118,8 @@ function handleDivClick(divId) {
        
     //     return;
     // }
+=======
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 
 
     if (dataState.selectColor) {
@@ -100,13 +134,18 @@ function handleDivClick(divId) {
     if (divClicked) {
         divClicked.style.border = "5px solid blue"
         dataState.selectColor = divId;
+<<<<<<< HEAD
         updateTextColor();
     }
     
+=======
+    }
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
 }
 
 
 function handleSubmit() {
+<<<<<<< HEAD
     let userInput = document.getElementById("enterAnything").value;
     dataState.enterText = userInput;
   
@@ -156,3 +195,34 @@ function handleReset() {
 
 
 
+=======
+
+
+    let userInput = document.getElementById("enterAnything").value;
+    dataState.enterText = userInput;
+
+    let txt = document.getElementById("textdiv").innerHTML = `Entered Data: ${userInput}`;
+
+    let emptyInput = document.getElementById("enterAnything").value = " ";
+    dataState.selectColor.innerHTML = "";
+}
+
+// reset.onclick = function() {
+//     renderUI()
+// }
+
+function handleReset(divId) {
+
+    let reset = document.getElementById("textdiv").innerHTML = " ";
+
+    if (dataState.selectColor) {
+        let selectedColor = document.getElementById(dataState.selectColor);
+        if (selectedColor) {
+            selectedColor.style.border = "";
+            dataState.selectColor = "";
+        }
+
+    }
+
+}
+>>>>>>> 2d5f1cec63269f80bdd173534c77f23e2cecd3ca
