@@ -1,15 +1,37 @@
-let div1 = document.createElement("div");
-div1.setAttribute("id", "div1");
-document.body.appendChild(div1);
-div1.textContent = "AYS";
+function init() {
+    let div1 = document.createElement("div");
+    div1.setAttribute("id", "div1");
+    document.body.appendChild(div1);
+    div1.textContent = "AYS";
+  
+    let div2 = document.createElement("div");
+    div2.setAttribute("id", "div2");
+    document.body.appendChild(div2);
+  
+    let table = document.createElement("table");
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    table.setAttribute("id", "table");
+    div2.appendChild(table);
+  
+    table.appendChild(tr);
+    tr.appendChild(td);
+    td.textContent = "Hello";
+    
+  
+    let div3 = document.createElement("div");
+    div3.setAttribute("id", "div3");
+    document.body.appendChild(div3);
 
-let div2 = document.createElement("div");
-div2.setAttribute("id", "div2");
-document.body.appendChild(div2);
+    let button = document.createElement("button");
+    button.setAttribute("type","submit");
+    button.setAttribute("value","Add button");
 
-let div3 = document.createElement("div");
-div3.setAttribute("id", "div3");
-document.body.appendChild(div3);
+
+  }
+  
+  init();
+  
 
 
 // function createForm() {
