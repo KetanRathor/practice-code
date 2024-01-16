@@ -19,12 +19,23 @@ function renderUI() {
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("name", "enterAnything");
     nameInput.setAttribute("id", "enterAnything")
+    nameInput.onchange = function (event) {
+        dataState.enterText = event.target.value;
+    }
     div1.appendChild(nameInput);
+
+   
 
     let submitButton = document.createElement("button");
     submitButton.setAttribute("name", "submit");
     submitButton.textContent = "Submit";
-    submitButton.onclick = handleSubmit;
+    submitButton.onclick =function(){
+        // handleSubmit();
+        // updateTextColor();
+        let res = document.getElementById("textdiv")
+        res.textContent = `Entered Data: ${dataState.enterText}`;
+        res.style.color = dataState.selectColor;
+    };
     div1.appendChild(submitButton);
 
     let resetButton = document.createElement("button");
@@ -32,9 +43,10 @@ function renderUI() {
     resetButton.textContent = "Reset";
     resetButton.onclick = handleReset;
     div1.appendChild(resetButton);
+    
 
 
-    main_div.appendChild(div1);
+    
 
 
     let textdiv = document.createElement("div");
@@ -47,43 +59,47 @@ function renderUI() {
     // div1.appendChild(divParent);
 
     let div2 = document.createElement("div");
-    div2.setAttribute("id", "div2");
+    div2.setAttribute("id", "yellow");
+    div2.style.backgroundColor = "yellow";
     div1.appendChild(div2);
     div2.onclick = function() {
-        handleDivClick("div2");
-        updateTextColor();
+        handleDivClick(div2.id);
+        // updateTextColor(event);
     };
 
 
     let div3 = document.createElement("div");
-    div3.setAttribute("id", "div3");
+    div3.setAttribute("id", "green");
+    div3.style.backgroundColor = "green";
     div1.appendChild(div3);
     div3.onclick = function() {
-        handleDivClick("div3");
-        updateTextColor();
+        handleDivClick(div3.id);
+        // updateTextColor(event);
     };
 
     let div4 = document.createElement("div");
-    div4.setAttribute("id", "div4");
+    div4.setAttribute("id", "red");
+    div4.style.backgroundColor = "red";
     div1.appendChild(div4);
     div4.onclick = function() {
-        handleDivClick("div4");
-        updateTextColor();
+        handleDivClick(div4.id);
+        // updateTextColor(event);
     };
 
+    main_div.appendChild(div1);
 }
 
 
-function handleDivClick(divId) {
+function handleDivClick(color) {
 
-    if (dataState.enterText !== "") {
+    // if (dataState.enterText !== "") {
         
-        return;
-    }
-    if (dataState.selectColor === divId) {
-        // If the clicked div is already selected, do nothing
-        return;
-    }
+    //     return;
+    // }
+    // if (dataState.selectColor === divId) {
+    //     // If the clicked div is already selected, do nothing
+    //     return;
+    // }
 
 
     if (dataState.selectColor) {
@@ -94,50 +110,91 @@ function handleDivClick(divId) {
     }
 
 
-    let divClicked = document.getElementById(divId);
-    if (divClicked) {
-        divClicked.style.border = "5px solid blue"
-        dataState.selectColor = divId;
-        updateTextColor();
-    }
-    
-}
-
-
-function handleSubmit() {
-    let userInput = document.getElementById("enterAnything").value;
-    dataState.enterText = userInput;
-  
-    let textdiv = document.getElementById("textdiv");
-    textdiv.innerHTML = `Entered Data: ${userInput}`;
-    let emptyInput = document.getElementById("enterAnything").value = " ";
-    dataState.selectColor.innerHTML = "";
-
-  }
-  
-
-
-function updateTextColor() {
-    let textdiv = document.getElementById("textdiv")
-    if(dataState.selectColor){
-        if(dataState.selectColor==="div2"){
-            textdiv.style.color = "yellow";
-    }
+    // let divClicked = document.getElementById(divId);
+    // if (divClicked) {
+    //     divClicked.style.border = "5px solid blue"
+    //     dataState.selectColor = divId;
         
-            else if(dataState.selectColor==="div3"){
-                textdiv.style.color = "green";
+    //     // updateTextColor();
+    // }
 
-        }
-        else if (dataState.selectColor==="div4"){
+    document.getElementById(color).style.border = "5px solid blue";
+    dataState.selectColor = color;    
+}
+
+
+// function handleSubmit() {
+//     // let userInput = document.getElementById("enterAnything").value;
+//     // dataState.enterText = userInput;
+//     dataState.enterText = document.getElementById("enterAnything").value;
+  
+//     let textdiv = document.getElementById("textdiv");
+//     // textdiv.innerHTML = `Entered Data: ${userInput}`;
+//     textdiv.innerHTML = `Entered Data: ${dataState.enterText}`;
+
+
+//     // console.log(dataState.enterText);
+//     // let emptyInput = document.getElementById("enterAnything").value = " ";
+//     // dataState.selectColor.innerHTML = "";
+//     // handleSubmit();
+
+//   }
+
+
+
+  
+
+
+  
+
+
+// function updateTextColor(event) {
+//     dataState.selectColor = event.target.id
+    
+// //     let textdiv = document.getElementById("textdiv")
+// //     if(dataState.selectColor){
+// //         if(dataState.selectColor==="div2"){
+// //             textdiv.style.color = "yellow";
+// //     }
+        
+// //             else if(dataState.selectColor==="div3"){
+// //                 textdiv.style.color = "green";
+
+// //         }
+// //         else if (dataState.selectColor==="div4"){
            
-            textdiv.style.color = "red";
+// //             textdiv.style.color = "red";
 
-    }
-}
-else{
-    textdiv.style.color = "black";
-}
-}
+// //     }
+// // }
+// // else{
+// //     textdiv.style.color = "black";
+// // }
+// }
+
+
+
+// function updateTextColor() {
+//     let textdiv = document.getElementById("textdiv");
+  
+//     if (dataState.selectColor) {
+//       if (dataState.selectColor === "div2") {
+//         dataState.enterText = "yellow";
+//       } else if (dataState.selectColor === "div3") {
+//         dataState.enterText = "green";
+//       } else if (dataState.selectColor === "div4") {
+//         dataState.enterText = "red";
+//       }
+//     } else {
+//       dataState.enterText = "black";
+//     }
+//     textdiv.textContent = `Entered Data: ${dataState.enterText}`;
+//   textdiv.style.color = dataState.enterText;
+// }
+
+
+
+
 
 function handleReset() {
     
@@ -145,6 +202,7 @@ function handleReset() {
 
    
     dataState.selectColor = "";
+    
     renderUI();
     
 }

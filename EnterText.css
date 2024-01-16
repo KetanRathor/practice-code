@@ -1,4 +1,4 @@
-#div2{
+#yellow{
     display: flex;
     background-color: hsl(60, 100%, 50%);
     position: relative;
@@ -6,7 +6,7 @@
     height: 40px;
     width: 40px;
 }
-#div3{
+#green{
     display: flex;
     background-color: green;
     position: relative;
@@ -14,7 +14,7 @@
     height: 40px;
     width: 40px;
 }
-#div4{
+#red{
     display: flex;
     background-color: red;
     position: relative;
@@ -37,7 +37,7 @@
     left: 25%;
 }
 #textdiv{
-   
+   background-color: rgb(177, 104, 104);
     display: flex;
     position: absolute;
     left: 200px;
