@@ -1,6 +1,6 @@
 #yellow{
     display: flex;
-    background-color: hsl(60, 100%, 50%);
+    /* background-color: hsl(60, 100%, 50%); */
     position: relative;
     flex-direction: row;
     height: 40px;
@@ -8,7 +8,7 @@
 }
 #green{
     display: flex;
-    background-color: green;
+    /* background-color: green; */
     position: relative;
     flex-direction: column;
     height: 40px;
@@ -16,7 +16,7 @@
 }
 #red{
     display: flex;
-    background-color: red;
+    /* background-color: red; */
     position: relative;
     flex-direction: column;
     height: 40px;

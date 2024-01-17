@@ -30,7 +30,7 @@ var aYSJSON = {
             ] 
         },
         "HR": {
-            "name" : "Nikita Dere"
+            "name" : "Nikita"
         }
     },
     "Company_Rooms" : [
@@ -39,8 +39,32 @@ var aYSJSON = {
         "Conference Room"
     ]
 };
-var cloud_emp = aYSJSON.Departments.Dev_ops.Employee_name;
 
-for(let i = 0; i<cloud_emp.length; i++){
-    console.log(cloud_emp[i].name);
+// let wwww = aYSJSON.Departments.QA.teamLead;
+// console.log(wwww);
+
+function createRooms(){
+    let newRoom= "common_room";
+   
+   
+    
+   aYSJSON.Company_Rooms.push(newRoom);
+   console.log(aYSJSON.Company_Rooms);
 }
+return createRooms();
+
+function create_Departments(departments){
+    let newDepartment = {
+        departments:"Finance"
+    };
+    aYSJSON.Departments[id] = newDepartment;
+    console.log(aYSJSON.Departments);
+}
+return create_Departments();
+
+
+// var cloud_emp = aYSJSON.Departments.Dev_ops.Employee_name;
+
+// for(let i = 0; i<cloud_emp.length; i++){
+//     console.log(cloud_emp[i].name);
+// }

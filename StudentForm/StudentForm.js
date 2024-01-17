@@ -1,29 +1,45 @@
 
         
         var dataArray = [];
-
+        
+    let num = 1;
         function submitForm() {
+
+
             var name = document.getElementById("name").value;
             var dob = document.getElementById("dob").value;
             var address = document.getElementById("address").value;
 
+
+// if id already exists update data 
+        //  var existingId = dataArray.find((entry)=>entry.id===id);
+        //  if(existingId){
+        //     var existingdata = dataArray[existingId];
+        //     existingId.name=name;
+        //     existingId.dob = dob;
+        //     existingId.address = address;
+        //  }
+        // else{
+    
             if (name.trim() === '' || dob === '' || address.trim() === '') {
                 alert('Please fill out all fields.');
                 return;
             }
 
-            
+            id="A"+num;
             var formData = {
+                id:id,
                 name: name,
                 dob: dob,
                 address: address,
                 age: calulate_age(dob)
             };
-
+            num++;
            
             dataArray.push(formData);
+            // console.log("AAAAAAAAAAA-----",dataArray);
             
-
+        
            
             updateTable(dataArray);
             
@@ -31,6 +47,9 @@
             
             document.getElementById("myForm").reset();
         }
+    
+    
+    
 
         function updateTable(dataArray) {
             var tableBody = document.getElementById("tableBody");
@@ -49,22 +68,24 @@
                 var cell4 = newRow.insertCell(3);
                 var cell5 = newRow.insertCell(4);
                 var cell6 = newRow.insertCell(5);
-
-                cell1.innerHTML = data.name;
-                cell2.innerHTML = data.dob;
-                cell3.innerHTML = data.address;
-                cell4.innerHTML = data.age;
+                var cell7 = newRow.insertCell(6);
+                
+                cell1.innerHTML = data.id;
+                cell2.innerHTML = data.name;
+                cell3.innerHTML = data.dob;
+                cell4.innerHTML = data.address;
+                cell5.innerHTML = data.age;
                 
                
 
                 var deleteButton = document.createElement("button");
                 deleteButton.innerHTML = "Delete";
                 deleteButton.onclick = createDeleteFunction(i);
-                cell5.appendChild(deleteButton);
+                cell6.appendChild(deleteButton);
                 var updateButton = document.createElement("button");
                 updateButton.innerHTML = "Update";
                 updateButton.onclick = updateDetails(i);
-                cell6.appendChild(updateButton);
+                cell7.appendChild(updateButton);
                 
                 
 
@@ -147,6 +168,20 @@
         };
         
     }
+
+    function EditDetails(){
+        var existingId = dataArray.find((entry)=>entry.id===id);
+         if(existingId){
+            var existingdata = dataArray[existingId];
+            existingId.name = name;
+            existingId.dob = dob;
+            existingId.address = address;
+         }
+        else{
+            
+    }
+    updateTable(dataArray);
+}
         
         
         

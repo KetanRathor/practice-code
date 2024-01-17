@@ -21,6 +21,10 @@ function renderUI() {
     nameInput.setAttribute("id", "enterAnything")
     nameInput.onchange = function (event) {
         dataState.enterText = event.target.value;
+        // console.log("22222", dataState.enterText)
+        // console.log("3333", event)
+        // console.log("4444", event.target)
+        // console.log("555", event.target.value)
     }
     div1.appendChild(nameInput);
 
@@ -119,8 +123,47 @@ function handleDivClick(color) {
     // }
 
     document.getElementById(color).style.border = "5px solid blue";
-    dataState.selectColor = color;    
+    dataState.selectColor = color;
+    
+    // console.log("11111",dataState.selectColor)    
 }
+
+
+function handleReset() {
+    
+    dataState.enterText = "";
+
+   
+    dataState.selectColor = "";
+    
+    renderUI();
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function handleSubmit() {
@@ -196,16 +239,7 @@ function handleDivClick(color) {
 
 
 
-function handleReset() {
-    
-    dataState.enterText = "";
 
-   
-    dataState.selectColor = "";
-    
-    renderUI();
-    
-}
 
 
 
