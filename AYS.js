@@ -43,24 +43,67 @@ var aYSJSON = {
 // let wwww = aYSJSON.Departments.QA.teamLead;
 // console.log(wwww);
 
-function createRooms(){
-    let newRoom= "common_room";
+// function createRooms(){
+//     let newRoom= "common_room";
    
    
     
-   aYSJSON.Company_Rooms.push(newRoom);
-   console.log(aYSJSON.Company_Rooms);
-}
-return createRooms();
+//    aYSJSON.Company_Rooms.push(newRoom);
+//    console.log(aYSJSON.Company_Rooms);
+// }
 
-function create_Departments(departments){
-    let newDepartment = {
-        departments:"Finance"
-    };
-    aYSJSON.Departments[id] = newDepartment;
-    console.log(aYSJSON.Departments);
+// function create_Departments(departments){
+//     let newDepartment = {
+//         departments:"Finance"
+//     };
+//     aYSJSON.Departments = newDepartment;
+//     console.log(aYSJSON.Departments);
+// }
+// return create_Departments();
+
+// function output(departments){
+//    let depart = aYSJSON.Departments
+//    console.log(depart);
+
+// }
+
+// output("string")
+
+function create_Departments(departments,desig,name){
+   
+        aYSJSON.Departments[departments] = {};
+    
+    aYSJSON.Departments[departments][desig] = name;
+    return aYSJSON.Departments;
+
 }
-return create_Departments();
+create_Departments("Finance","TeamLead", "Ketan");
+
+// create_Departments("Finance")
+// console.log(create_Departments("Finance","TeamLead","Ketan"));
+// console.log(create_Departments("jjjj"));
+
+function create_DesigInDepartment(desig,name){
+    aYSJSON.Departments.Finance[desig] = name;
+    return aYSJSON.Departments;
+}
+console.log(create_DesigInDepartment("name","Sourav"));
+
+
+
+// function objectInDepartment(){
+//     let newObj = {
+//         name:"Ketan",
+//         mob_num: 7479713088
+//     };
+//     return aYSJSON.Departments.Finance = newObj;
+// }
+// // console.log(objectInDepartment(aYSJSON.Departments.Finance));
+
+
+// console.log(aYSJSON);
+
+
 
 
 // var cloud_emp = aYSJSON.Departments.Dev_ops.Employee_name;
