@@ -1,17 +1,77 @@
 
         
-       var dataArray = [];
-       var indexArray = [];
+var dataArray;
+if (localStorage.getItem('dataArray')) {
+    dataArray = JSON.parse(localStorage.getItem('dataArray'));
+} else {
+    dataArray = [];
+}
+var selectedIndex = null;
        
-   var num = 1;
+// var num = 1;
+if (localStorage.getItem('num')) {
+    // If stored, retrieve the value and parse it to an integer
+    num = parseInt(localStorage.getItem('num'));
+} else {
+    // If not stored, initialize 'num' to 1
+    num = 1;
+}
 
-   window.onload = function(){
-    var storedData = localStorage.getItem("myData");
-    if(storedData){
-        dataArray = JSON.parse(storedData);
-        updateTable(dataArray);
+
+   function addData(obj){
+    dataArray.push(obj);
+    saveToLocalStorage();
+    DisplayUI(dataArray);
+   }
+
+   function saveToLocalStorage() {
+    localStorage.setItem('dataArray', JSON.stringify(dataArray));
+    localStorage.setItem('num', num.toString()); 
+}
+
+   function DisplayUI(dataArray) {
+    var tableBody = document.getElementById("tableBody");
+
+    
+    tableBody.innerHTML = '';
+
+    
+    for (var i = 0; i < dataArray.length; i++) {
+        var data = dataArray[i];
+
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        var cell7 = newRow.insertCell(6);
+        
+        
+        cell1.innerHTML = data.id;
+        cell2.innerHTML = data.name;
+        cell3.innerHTML = data.dob;
+        cell4.innerHTML = data.address;
+        cell5.innerHTML = data.age;
+        
+       
+
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete";
+        deleteButton.onclick = createDeleteFunction(i);
+        cell6.appendChild(deleteButton);
+        var editButton = document.createElement("button");
+        editButton.innerHTML = "Edit";
+        editButton.onclick = editDetails(i);
+        cell7.appendChild(editButton);
+
+        
+        
+
     }
-   };
+}
+
 
        function submitForm() {
    
@@ -38,14 +98,15 @@
            };
            num++;
           
-           dataArray.push(formData);
-
+           
+           addData(formData);
            // console.log("Old---",dataArray);
            // console.log("AAAAAAAAAAA-----",dataArray);
        
         
           
-           updateTable(dataArray);
+           
+           
            
        
            
@@ -55,48 +116,7 @@
    
    
 
-       function updateTable(dataArray) {
-           var tableBody = document.getElementById("tableBody");
-
-           
-           tableBody.innerHTML = '';
-
-           
-           for (var i = 0; i < dataArray.length; i++) {
-               var data = dataArray[i];
-
-               var newRow = tableBody.insertRow(tableBody.rows.length);
-               var cell1 = newRow.insertCell(0);
-               var cell2 = newRow.insertCell(1);
-               var cell3 = newRow.insertCell(2);
-               var cell4 = newRow.insertCell(3);
-               var cell5 = newRow.insertCell(4);
-               var cell6 = newRow.insertCell(5);
-               var cell7 = newRow.insertCell(6);
-               
-               
-               cell1.innerHTML = data.id;
-               cell2.innerHTML = data.name;
-               cell3.innerHTML = data.dob;
-               cell4.innerHTML = data.address;
-               cell5.innerHTML = data.age;
-               
-              
-
-               var deleteButton = document.createElement("button");
-               deleteButton.innerHTML = "Delete";
-               deleteButton.onclick = createDeleteFunction(i);
-               cell6.appendChild(deleteButton);
-               var editButton = document.createElement("button");
-               editButton.innerHTML = "Edit";
-               editButton.onclick = editDetails(i);
-               cell7.appendChild(editButton);
-
-               
-               
-
-           }
-       }
+       
 
        function calulate_age(dob){
               var age = new Date(dob);
@@ -120,7 +140,9 @@
        function deleteRow(index) {
            
            dataArray.splice(index, 1);
-           updateTable(dataArray);
+           saveToLocalStorage();
+           DisplayUI(dataArray);
+           
 
            
        }
@@ -134,7 +156,8 @@
 
        function sortasc() {
            sortArrayAscending('age');
-           updateTable(dataArray);
+           saveToLocalStorage()
+           DisplayUI(dataArray);
        }
 
        function sortArrayDescending(key) {
@@ -145,7 +168,8 @@
 
        function sortdesc() {
            sortArrayDescending('age');
-           updateTable(dataArray);
+           saveToLocalStorage()
+           DisplayUI(dataArray);
        }
 
        
@@ -162,7 +186,8 @@
            let matchedData = dataArray.filter(filterByName);
        
            
-           updateTable(matchedData);
+           
+           DisplayUI(matchedData);
        }
 
        function editDetails(index) {
@@ -175,7 +200,7 @@
     
         // store the curr index for use in the updateDetails function
         
-        indexArray = [index];
+        selectedIndex = index;
         };
     }
     
@@ -183,7 +208,7 @@
     function updateDetails() {
         // retrieve the stored index 
         
-        var index = indexArray[0];
+        var index = selectedIndex;
         // Retrieve the values from the form inputs
         var name = document.getElementById("name").value;
         var dob = document.getElementById("dob").value;
@@ -200,13 +225,19 @@
             existingData.address = address;
     
             // update table
-            updateTable(dataArray);
+            // saveToLocalStorage()
+            DisplayUI(dataArray);
     
             // reset the form
             document.getElementById("myForm").reset();
+
+            // selectedIndex = null;
             
         }
+        
     }
+    
+
     
     
     // function updateDetails(index) {
